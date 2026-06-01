@@ -1,0 +1,15 @@
+.video-player{
+    min-height: 100vh;
+    background-color: #111;
+    color:white;
+    padding: 2rem;
+}
+.video-page{
+    max-width: 900px;
+    margin:0 auto;
+}
+.video-page video{
+    width:100%;
+    border-radius: 12px;
+    background-color: black;
+}
