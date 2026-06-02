@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 import {useNavigate} from "react-router-dom";
 import api, {BASE_URL} from '../../services/api';
-function ImageCard({image, confirmDelete}){
+function ImageCard({image, confirmDelete,promptLogin}){
     const navigate=useNavigate();
+    const token=localStorage.getItem('token');
     function openVideo(){
+        if(!token){
+            promptLogin();
+            return
+        }
         navigate(`/video/${image.id}`);
     }
     const role=localStorage.getItem("role");

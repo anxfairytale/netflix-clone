@@ -4,7 +4,6 @@ module.exports = (Sequelize, sequelize) => {
       type: Sequelize.STRING,
       allowNull: false
     },
-
     description: {
       type: Sequelize.TEXT,
       allowNull: false
@@ -22,10 +21,17 @@ module.exports = (Sequelize, sequelize) => {
       allowNull: false,
       defaultValue: 'pending'
     },
-
+    genre:{
+      type:Sequelize.STRING,
+      allowNull:false
+    },
     userId: {
       type: Sequelize.INTEGER,
       allowNull: false
+    },
+    forKids:{
+      type:Sequelize.BOOLEAN,
+      allowNull:false
     }
   })
 

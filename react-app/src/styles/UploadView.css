@@ -3,10 +3,18 @@
     margin-bottom:10px;
     font-weight: bold;
 }
-.upload-page input, .upload-page textarea{
+.search-bar,.upload-page input, .upload-page textarea{
+    background-color:white;
+    border:1px solid #3d0a28;
+    color:#f1e0ea;
     width: 100%;
     margin-bottom:10px;
 }
+input:focus{
+    border-color:#be185d;
+    box-shadow:0 0 0 3px rgba(190,24,93,0.2);
+}
+
 .upload-page{
     display: flex;
     flex-direction: column;
@@ -15,15 +23,12 @@
     height:100vh;
 }
 .upload-page .card{
-    background-color: #ccc;
-    color:black;
+    background-color: #120a18;
+    color:#f1e0ea;
     padding:15px;
+    border: 1px solid #3d0a28;
     border-radius: 12px;
     width: 500px;
-}
-nav{
-    background-color: rgb(99, 8, 8);
-    height: 50px;
 }
 
 .l1{
@@ -31,10 +36,11 @@ nav{
     text-decoration: none;
     padding: 10px;
 }
-.nav-bar{
-    display:flex;
-    flex-direction: row;
-    justify-content: center;
-    text-align:center;
-    padding-top:10px; 
+
+.upload-page input[type="radio"]{
+    width:auto;
+    margin-right: 5px;
+}
+.kid1{
+    margin-bottom:10px;
 }

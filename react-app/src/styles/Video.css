@@ -13,3 +13,6 @@
     border-radius: 12px;
     background-color: black;
 }
+dialog, .pass-modal { background: #0d0a14; border: 1px solid #3d0a28; }
+.video-card { border: 1px solid #3d0a28; background: #120a18; }
+.video-card:hover { border-color: #be185d; box-shadow: 0 0 16px rgba(236, 72, 153, 0.25); }

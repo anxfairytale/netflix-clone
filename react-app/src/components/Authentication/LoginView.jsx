@@ -95,7 +95,7 @@ function LoginView() {
     }
     return (
         <section className="login-page">
-            <ParticleBackground/>
+            <ParticleBackground />
             <div className="card">
                 <h1>{mode === 'login' ? "Login" : "Sign Up"}</h1>
                 <form onSubmit={submit} className="form">

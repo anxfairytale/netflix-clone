@@ -90,7 +90,9 @@ router.post('/image', authenticateToken, upload.fields([{name:'image',maxCount:1
       imageURL: imageFile? imageFile.path:null,
       videoURL: videoFile?videoFile.path:null,
       status: 'pending',
-      userId:req.user.id
+      userId:req.user.id,
+      genre:req.body.genre,
+      forKids:'true'===req.body.forKids
     })
 
     res.status(201).json({

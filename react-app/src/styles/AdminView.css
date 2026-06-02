@@ -34,8 +34,8 @@ dialog {
   position: fixed;
   top: 50%;
   left: 50%;
+  right:50%;
   transform: translate(-50%, -50%);
-
   z-index: 99999;
 
   border: none;
@@ -62,4 +62,11 @@ dialog {
     justify-content: center;
     align-items: center;
     z-index:9999;
+}
+.landing-text{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
 }

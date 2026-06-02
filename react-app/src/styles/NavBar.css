@@ -1,16 +1,49 @@
-nav{
-    background-color: rgb(99,8,8);
-    height:50px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding: 0,24px;
-}
-.nav-left{
-    display:flex;
+.navbar {
+    background-color: #0d0a14;
+    height: 50px;
+    display: flex;
     align-items: center;
-    gap:16px;
+    gap: 16px;
+    padding: 0 24px;
+    position: relative;
+    z-index: 99999;
+    border-bottom: 1px solid #3d0a28;
 }
-.logo{
-    height:35px;
+
+.navbar button {
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar button:last-child {
+    margin-left: auto;
+}
+.modal-backdrop{
+    position:fixed;
+    inset:0;
+    background-color: rgba(0,0,0,0.65);
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    z-index:9999;
+}
+.pass-modal{
+    background: #181818;
+    color:white;
+    padding: 24px;
+    border-radius:16px;
+    width:320px;
+    text-align: center;
+}
+.pass-modal input{
+    width:100%;
+    padding:10px;
+    margin:12px 0;
+    border-radius: 8px;
+    border:none;
+}
+.pass-error{
+    color:#ff6b6b;
 }

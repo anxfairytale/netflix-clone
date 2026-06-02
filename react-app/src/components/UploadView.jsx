@@ -6,6 +6,8 @@ function UploadView() {
     const [description, setDescription] = useState('')
     const [image, setImage] = useState(null);
     const [video, setVideo] = useState(null);
+    const [genre, setGenre] = useState('');
+    const [kid, setKid] = useState(false)
     async function uploadMedia(e) {
         e.preventDefault();
         try {
@@ -14,6 +16,8 @@ function UploadView() {
             formData.append("description", description);
             formData.append("image", image);
             formData.append("video", video);
+            formData.append("genre",genre);
+            formData.append("forKids",kid)
             const response = await api.post("/image", formData);
             console.log(response.data);
             alert("Upload successful");
@@ -21,6 +25,8 @@ function UploadView() {
             setDescription("");
             setImage(null);
             setVideo(null);
+            setGenre("");
+            setKid(false);
         } catch (err) {
             console.log(err.response?.data);
             alert("Upload Failed");
@@ -46,7 +52,15 @@ function UploadView() {
                     <div>
                         <label>Video</label>
                         <input type="file" accept="video/*" onChange={(e) => setVideo(e.target.files[0])} />
-
+                    </div>
+                    <div>
+                        <label>Genre</label>
+                        <input type="text" value={genre} onChange={(e)=>setGenre(e.target.value)}/>
+                    </div>
+                    <div class="kid1">
+                        <label>Is this made for kids</label>
+                        <input type="radio" name="kid" id="kid" value='true' onChange={(e)=>setKid(e.target.value)}/>Yes
+                        <input type="radio" name="kid" id="kid" value='false' onChange={(e)=>setKid(e.target.value)}/>No
                     </div>
                     <button type="submit">Upload</button>
                 </form>
