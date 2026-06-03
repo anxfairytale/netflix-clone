@@ -72,10 +72,11 @@ function LoginView() {
         const body = mode === 'login' ? { email, password } : { name, email, password };
         try {
             const response = await axios.post(url, body);
-
+            console.log(response.data)
             localStorage.setItem("token", response.data.accessToken);
             const payload = JSON.parse(atob(response.data.accessToken.split(".")[1]));
             localStorage.setItem("role", payload.role);
+            localStorage.setItem("name", payload.name);
             setSuccessMessage(response.data.message);
             if (payload.role === "admin") {
                 navigate("/admin");

@@ -19,8 +19,12 @@ function ImageCard({image, confirmDelete,promptLogin}){
             )}
             <div className="hover-info">
             <h3>{image.title}</h3>
-            <p>{image.description}</p>
-            {role==='admin' && <button onClick={(e)=>confirmDelete(e,image.id)}>Delete</button>}
+            <p className="description">
+                {image.description.length>50 ? 
+                image.description.slice(0,50) + "..." : image.description
+                }
+                </p>
+            {role==='admin' && <button onClick={(e)=>confirmDelete(e,image.id) } className="danger">Delete</button>}
             </div>
         </div>
     )

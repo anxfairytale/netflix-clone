@@ -1,5 +1,5 @@
 .landing-page {
-  background-color: black;
+  background-color: #C1EBE9;
   color: #e7e7e7;
   min-height: 100vh;
   overflow: hidden;
@@ -53,13 +53,9 @@ header h1{
     margin:0;
     font-size: 3rem;
     font-weight:300;
+    color: #4F252E;;
 }
-nav{
-    display:flex;
-    align-items:center;
-    gap:3rem;
-    margin-left: -5%;
-}
+
 nav a{
     font-size: 1rem;
     letter-spacing: 0.1rem;
@@ -67,12 +63,17 @@ nav a{
     text-decoration: none;
     color:inherit;
 }
-nav a:hover{
+nav button:hover{
     color:#a7a7a7;
+    background: #ffbf6f;
+    transform: translateY(-2px);
+}
+nav button:active{
+    color: #C1EBE9;
 }
 .btn-signing{
-    background-color: #a7a7a7;
-    color:black;
+    background-color: #ffbf6f;
+    color:#4F252E;
     padding: 0.8rem 2rem;
     border-radius:50px;
     font-weight: 500;
@@ -80,7 +81,8 @@ nav a:hover{
     cursor: pointer;
 }
 .btn-signing:hover{
-    background-color: white;
+    background-color: #4F252E;
+    color: #ffbf6f;
 }
 main{
     display:flex;
@@ -125,9 +127,10 @@ main{
     transition: 0.5s ease;
 }
 .tag-box .tag:hover{
-    color:#5300a0;
+    color:#4F252E;
 }
 .content h1{
+    color:#4F252E;
     font-size: 4rem;
     font-weight: 600;
     letter-spacing:0.1em;
@@ -153,14 +156,15 @@ main{
     font-size:1.2rem;
     font-weight:600;
     letter-spacing: 0.1em;
+    color:#4F252E;
 }
 .btn-get-started:hover{
-    background-color: #1a1a1a; 
+    color:#ffbf6f; 
 }
 .btn-signing-main{
     text-decoration: none;
-    background-color: lightgray;
-    color:black;
+    background-color: #ffbf6f;
+    color:#4F252E;
     padding: 0.6rem 2.5rem;
     border-radius: 50px;
     font-size:1.2rem;
@@ -169,5 +173,6 @@ main{
     transition: background-color 0.2s ease;
 }
 .btn-signing-main:hover{
-    background-color: grey;
+    background-color: #4F252E;
+    color:#ffbf6f;
 }

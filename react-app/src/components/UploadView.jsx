@@ -47,22 +47,30 @@ function UploadView() {
                     </div>
                     <div>
                         <label>Thumbnail</label>
-                        <input type="file" accept="image/*" onChange={(e) => setImage(e.target.files[0])} />
+                        <input type="file" accept="image/*" onChange={(e) => setImage(e.target.files[0])} className="file-text"/>
                     </div>
                     <div>
                         <label>Video</label>
-                        <input type="file" accept="video/*" onChange={(e) => setVideo(e.target.files[0])} />
+                        <input type="file" accept="video/*" onChange={(e) => setVideo(e.target.files[0]) } className="file-text"/>
                     </div>
                     <div>
                         <label>Genre</label>
-                        <input type="text" value={genre} onChange={(e)=>setGenre(e.target.value)}/>
+                        <select id="genre" value={genre} onChange={(e)=>setGenre(e.target.value)}>
+                            <option value="" disabled>--Select an option--</option>
+                            <option value="flower">Flower</option>
+                            <option value="water">Water</option>
+                            <option value="food">Food</option>
+                            <option value="computer">Computer</option>
+                            <option value="butterfly">Butterfly</option>
+                            <option value="kids">Kids</option>
+                        </select>
                     </div>
                     <div class="kid1">
                         <label>Is this made for kids</label>
-                        <input type="radio" name="kid" id="kid" value='true' onChange={(e)=>setKid(e.target.value)}/>Yes
-                        <input type="radio" name="kid" id="kid" value='false' onChange={(e)=>setKid(e.target.value)}/>No
+                        <input type="radio" name="kid" id="kid" value='true' onChange={(e)=>setKid(e.target.value)}/><p>Yes</p>
+                        <input type="radio" name="kid" id="kid" value='false' onChange={(e)=>setKid(e.target.value)}/><p>No</p>
                     </div>
-                    <button type="submit">Upload</button>
+                    <button type="submit" className="upload-btn">Upload</button>
                 </form>
 
             </div>

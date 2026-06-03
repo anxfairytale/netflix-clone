@@ -1,24 +1,39 @@
 .navbar {
-    background-color: #0d0a14;
-    height: 50px;
+    background: rgb(7, 166, 171);
+    height: 60px;
     display: flex;
     align-items: center;
     gap: 16px;
     padding: 0 24px;
     position: relative;
     z-index: 99999;
-    border-bottom: 1px solid #3d0a28;
+    border-bottom: 1px solid #F4AE52;
 }
-
+nav{
+    background-color: #be185d ;
+    height: 50px;
+}
 .navbar button {
     height: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding:10px;
+    background: #F4AE52;
 }
-
-.navbar button:last-child {
-    margin-left: auto;
+.pass-modal button{
+    padding:3px;
+    margin-left:10px;
+}
+.user-section{
+    margin-left:auto;
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+.name-box{
+    margin:0;
+    color:white
 }
 .modal-backdrop{
     position:fixed;
@@ -29,9 +44,12 @@
     align-items:center;
     z-index:9999;
 }
+.pass-modal h2{
+    color:#4F252E;
+}
 .pass-modal{
-    background: #181818;
-    color:white;
+    background: #FFF7C5;
+    color: black;;
     padding: 24px;
     border-radius:16px;
     width:320px;

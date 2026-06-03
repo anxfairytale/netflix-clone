@@ -3,16 +3,18 @@
     background-color: #111;
     color:white;
     padding: 2rem;
+    background-color: #FFF7C5;
 }
 .video-page{
     max-width: 900px;
     margin:0 auto;
+    background-color: #C1EBE9;
 }
 .video-page video{
     width:100%;
     border-radius: 12px;
-    background-color: black;
 }
-dialog, .pass-modal { background: #0d0a14; border: 1px solid #3d0a28; }
-.video-card { border: 1px solid #3d0a28; background: #120a18; }
-.video-card:hover { border-color: #be185d; box-shadow: 0 0 16px rgba(236, 72, 153, 0.25); }
+.video-page h1{
+    color:#3d0a28
+}
+dialog, .pass-modal { background: #FFF7C5; border: 1px solid #3d0a28; }

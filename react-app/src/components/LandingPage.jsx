@@ -11,13 +11,6 @@ function LandingPage() {
       <header>
         <h1 className="logo">YouFlicks</h1>
 
-        <nav>
-          <a href="/home">Home</a>
-          <a href="/uploads">Upload</a>
-          <a href="/admin">Admin</a>
-          <a href="/kids">Kids</a>
-        </nav>
-
         <a href="/login" className="btn-signing">Sign in</a>
       </header>
 

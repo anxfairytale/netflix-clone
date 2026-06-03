@@ -1,90 +1,120 @@
-.login-page{
-    display:flex;
+.login-page {
+    display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    flex-direction:column;
-    background-color: #0f0f0f;
+    flex-direction: column;
+    background-color: #C1EBE9;
 }
-.login-page h1{
-    display:block;
+
+.login-page h1 {
+    display: block;
+    color: #4F252E;
+    ;
 }
+
 #tsparticles {
     position: fixed;
     inset: 0;
     z-index: 0;
 }
-.login-page .card{
-    background-color: rgba(20, 20, 20, 0.75);
-    color:white;
+
+.login-page .card {
+    background: rgba(255, 247, 197, 0.7);
+    border: 1px solid rgba(255, 247, 197, 0.1);
+    color: white;
     padding-bottom: 17px;
-    padding-right:20px;
+    padding-right: 20px;
     padding-left: 10px;
     border-radius: 18px;
-    border: 1px solid rgba(236, 72, 153, 0.25);
     box-shadow: 0 0 30px rgba(236, 72, 153, 0.1);
     backdrop-filter: blur(3px);
     display: flex;
     flex-direction: column;
     align-items: center;
-    position:relative;
-    z-index:1;
+    position: relative;
+    z-index: 1;
+    width:500px;
+    transition: border-color 0.5s ease;
 }
-.login-page .form{
-    display:flex;
+
+.login-page .card:hover {
+    border-color: #F4AE52;
+}
+
+.login-page .form {
+    display: flex;
     flex-direction: column;
     width: 300px;
     gap: 1rem;
 }
-.login-page .form-controls{
-    display:block;
+
+.login-page .form-controls {
+    display: block;
 }
-.login-page .input-control, .login-page input{
+
+.login-page .input-control,
+.login-page input {
     width: 100%;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     border: 1px solid black;
     border-radius: 3px;
-    height:1.5rem;
+    height: 1.5rem;
+    outline:none;
+    padding-left:7px;
 }
-.login-page input:focus, .login-page button:hover{
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+
+.login-page input:focus,
+.login-page button:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
-.login-page label{
-    display:block;
+
+.login-page label {
+    display: block;
     font-weight: bold;
+    color: #4F252E;
 }
-.login-page .otp-row{
-    display:flex;
+
+.login-page .otp-row {
+    display: flex;
     gap: 10px;
 }
-.login-page .otp-row input{
+
+.login-page .otp-row input {
     flex: 1;
-    width:auto;
+    width: auto;
 }
-.login-page .otp-row button{
+
+.login-page .otp-row button {
     width: 90px;
 }
-button{
-    background-color: #be185d;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    border:1px solid #ec4899;
+
+button {
+    background: #F4AE52;
+    color: #4F252E;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border:none;
     height: 1.5rem;
-    color:white;
-    font-weight:bold;
+    font-weight: bold;
     border-radius: 5px;
+    transition: background-color 0.4s ease;
 }
- button:hover{
-    background-color: #9d1550;
-    border-color: #f472b6; 
-    box-shadow: 0 0 12px rgba(236, 72, 153, 0.35) ;
+
+button:hover {
+    background-color: #4F252E;
+    color:#F4AE52;
+    box-shadow: 0 0 12px rgba(44, 36, 40, 0.35);
     transition: 0.4s;
 }
-button:active{
-    background-color:#831243;
+
+button:active {
+    background-color: #831243;
 }
-.error{
+
+.error {
     color: red;
 }
-.success{
-    color:green;
+
+.success {
+    color: green;
 }

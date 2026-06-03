@@ -27,6 +27,8 @@ function HomeView() {
         setImages((prevImages) =>
             prevImages.filter((image) => image.id != id)
         )
+        setAllImages((prevImages) =>
+            prevImages.filter((image) => image.id != id))
     }
     function promptLogin() {
         setLog(true);
@@ -70,16 +72,16 @@ function HomeView() {
                 <dialog open class="d1">
                     <h1>Login</h1>
                     <p>To continue watching the video, consider logging in</p>
-                    <button onClick={login}>Login</button>
-                    <button onClick={() => setLog(false)}>Back</button>
+                    <button onClick={login} className="secondary">Login</button>
+                    <button onClick={() => setLog(false)} className="secondary">Back</button>
                 </dialog>
             </div>)}
             {dial && (<div className="modal-overlay">
-                <dialog open class="d1">
+                <dialog open className="d1">
                     <h1>Are you sure you want to delete this video?</h1>
                     <p>Changes made cannot be undone</p>
-                    <button onClick={notConfirm}>No</button>
-                    <button onClick={deleteId}>Yes</button>
+                    <button onClick={notConfirm} className="secondary">No</button>
+                    <button onClick={deleteId} className="danger">Yes</button>
                 </dialog>
             </div>)
             }
@@ -87,20 +89,31 @@ function HomeView() {
                 <div className="search">
                     <input type="text" className="search-bar" placeholder="Search Videos" onChange={searchVideo} />
                 </div>
-                <div className="genre">
+                {/* <div className="genre">
                     <select className="drop" onChange={handleSearch}>
                         <option key="all" value="All">Select a genre</option>
                         {genres.map((genre) => (
                             <option key={genre} value={genre}>{genre}</option>
                         ))}
-                    </select></div>
+                    </select></div> */}
 
             </div>
-        
-            <div className="home-grid">
-                {images.map((image) => (
-                    <ImageCard key={image.id} image={image} confirmDelete={confirmDelete} promptLogin={promptLogin} />
-                ))}
+            <div>
+                {genres.map((genre)=>{
+                    
+                    const filteredImages=images.filter((i)=>i.genre.toLowerCase()==genre);
+                    if(filteredImages.length===0) return null;
+                    return(
+                        <section key={genre} className="genre-section">
+                            <h3>{genre.toUpperCase()}</h3>
+                            <div className="home-grid">
+                                {filteredImages.map((image)=>(
+                        <ImageCard key={image.id} image={image} confirmDelete={confirmDelete} promptLogin={promptLogin}/>
+                    ))}
+                            </div>
+                        </section>
+                    )
+                })}
             </div>
         </section>
 

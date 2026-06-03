@@ -1,1 +1,1 @@
-# netflix-clone
+This is a Video Player app that has a completely working backend and uses Jwt authentication to login the user

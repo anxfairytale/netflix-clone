@@ -18,8 +18,8 @@ function KidsView({ setKids }) {
         const filteredImages = response.data.filter((i) => i.forKids === true);
         setDispImage(filteredImages);
     }
-    function confirmDelete() { }
-    function promptLogin() { }
+    function confirmDelete(){}
+    function promptLogin() {}
     return (
         <section className="kids-page">
             <h1>Kids Page</h1>

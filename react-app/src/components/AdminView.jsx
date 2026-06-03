@@ -18,8 +18,6 @@ function AdminView() {
     async function approveImage(id) {
         try {
             await api.patch(`/image/${id}/approve`);
-            console.log("clicked id:", id);
-            console.log("before:", images);
             setImages((prevImages) => prevImages.filter((image) => String(image.id) !== String(id)))
         } catch (err) {
             console.log(err);
@@ -28,8 +26,6 @@ function AdminView() {
     async function rejectImage(id) {
         try {
             await api.patch(`/image/${id}/reject`);
-            console.log("clicked id:", id);
-            console.log("before:", images);
             setImages((prevImages) => prevImages.filter((image) => String(image.id) !== String(id)))
         } catch (err) {
             console.log(err);
