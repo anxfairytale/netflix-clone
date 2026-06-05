@@ -23,7 +23,7 @@ function KidsView({ setKids }) {
     return (
         <section className="kids-page">
             <h1>Kids Page</h1>
-            <div className="home-grid">
+            <div className="kids-content">
                 {dispImage.map((ima) =>
                     <ImageCard key={ima.id} image={ima} confirmDelete={confirmDelete} promptLogin={promptLogin} />
                 )}

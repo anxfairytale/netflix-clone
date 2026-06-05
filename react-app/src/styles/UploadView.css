@@ -57,12 +57,18 @@ p{
 .upload-page h1,label{
     color: #4F252E;
 }
+.upload-page h1{
+    justify-self: center;
+}
 .upload-page p{
     display: inline;
     margin-right:10px;
 }
 .upload-btn{
     padding:5px;
+    margin-left:400px;
+    height:40px;
+    width:70px;
 }
 .kid1{
     margin-bottom:10px;

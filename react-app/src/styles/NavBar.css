@@ -13,6 +13,12 @@ nav{
     background-color: #be185d ;
     height: 50px;
 }
+.navbar button.active-nav {
+    background-color: #4F252E;
+    color: white;
+    box-shadow: 0 0 12px rgb(12, 21, 21);
+    transform: translateY(-2px);
+}
 .navbar button {
     height: 32px;
     display: flex;

@@ -1,0 +1,96 @@
+.profile-page {
+    min-height: 100vh;
+    padding: 40px 40px;
+    background: white;
+    color: white;
+}
+
+.profile-page h1 {
+    font-size: 36px;
+    margin-bottom: 24px;
+    color: #4F252E;
+    justify-self: center;
+}
+
+.user-details,
+.profile-form, .form1{
+    min-width: 520px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(244, 174, 82, 0.35);
+    border-radius: 18px;
+    padding: 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 0 25px rgba(244, 174, 82, 0.18);
+    backdrop-filter: blur(12px);
+    justify-self: center;
+}
+
+.user-details p {
+    margin: 12px 0;
+    font-size: 16px;
+}
+
+.profile-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    justify-self: center;
+}
+
+.profile-form h2 {
+    color: #F4AE52;
+    margin-bottom: 8px;
+}
+
+.profile-form label {
+    font-weight: 600;
+}
+
+.profile-form input {
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: #ccc;
+    color: white;
+    outline: none;
+}
+
+.profile-form input:focus {
+    border-color: #F4AE52;
+    box-shadow: 0 0 12px rgba(244, 174, 82, 0.4);
+}
+
+.profile-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.profile-page button {
+    justify-content:center;
+    padding-top: 6px;
+    padding-bottom:6px;
+    margin-bottom:12px;
+    width:80px;
+    height:25px;
+    border-radius: 9px;
+    border: none;
+    background: #F4AE52;
+    color: #1b1024;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+.edit-btn{
+    justify-self: center;
+}
+.profile-page button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 14px rgba(244, 174, 82, 0.6);
+}
+
+.profile-page .danger-btn {
+    background: #ef4444;
+    color: white;
+}

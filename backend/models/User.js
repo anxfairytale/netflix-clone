@@ -23,6 +23,18 @@ module.exports = (Sequelize, sequelize) => {
             type: Sequelize.BOOLEAN,
             allowNull: false,
             defaultValue: false
+        },
+        dob:{
+            type:Sequelize.DATEONLY,
+            allowNull:true
+        },
+        above18:{
+            type:Sequelize.BOOLEAN,
+            allowNull:false
+        },
+        passphrase:{
+            type:Sequelize.STRING,
+            allowNull:true
         }
     });
     return User;

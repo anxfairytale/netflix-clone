@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate,useLocation } from "react-router-dom";
 import logo from '../styles/logo.png';
 import '../styles/NavBar.css';
-
+import { authApi } from "../services/api";
 function Navbar({ kids, setKids }) {
     const navigate = useNavigate();
+    const location=useLocation();
     const [showPassModal, setPassModal] = useState(false);
     const [passphrase, setPassphrase] = useState("")
     const [error, setError] = useState("");
@@ -12,6 +13,7 @@ function Navbar({ kids, setKids }) {
     const token = localStorage.getItem("token");
     const role = localStorage.getItem("role");
     const name = localStorage.getItem("name");
+    const above18=localStorage.getItem("above18")==="true" || localStorage.getItem("above18") === "1";
     function protectedNavigate(path) {
         if (kids && path !== "/kids") {
             setTargetPath(path);
@@ -49,20 +51,22 @@ function Navbar({ kids, setKids }) {
     return (
         <section>
             <nav className="navbar">
-                <button className="l1" onClick={() => protectedNavigate('/home')}>Home</button>
+                {above18 && (<button className={`l1 ${location.pathname==="/home"?"active-nav":""}`} onClick={() => protectedNavigate('/home')}>Home</button>)}
 
                 {token && role === "user" && (
-                    <button className="l1" onClick={() => protectedNavigate('/uploads')}>Uploads</button>
+                    <button className={`l1 ${location.pathname==="/uploads"?"active-nav":""}`} onClick={() => protectedNavigate('/uploads')}>Uploads</button>
                 )}
                 {token && role === "admin" && (
-                    <button className="l1" onClick={() => protectedNavigate("/admin")}>Admin</button>
+                    <button className={`l1 ${location.pathname==="/admin"?"active-nav":""}`} onClick={() => protectedNavigate("/admin")}>Aprrovals</button>
                 )}
-                {token && role === "user" && (
-                    <button className="l1" onClick={() => protectedNavigate("/kids")}>Kids</button>
+                {token && role === "user" && !above18 &&(
+                    <button className={`l1 ${location.pathname==="/kids"?"active-nav":""}`} onClick={() => protectedNavigate("/kids")}>Kids</button>
                 )}
                     {token && (
                         <div className="user-section">
                             <h3 className="name-box">Hello, {name} </h3>
+                        <button className={`l1 ${location.pathname==='/profile'?"active-nav":""}` } onClick={()=>protectedNavigate("/profile")}>Profile</button>
+                        <button className={`l1 ${location.pathname==="/my-images"?"active-nav":""}`} onClick={()=>protectedNavigate("/my-images")}>My Images</button>
                         <button onClick={logout}>
                             Logout
                         </button>

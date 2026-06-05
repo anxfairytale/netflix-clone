@@ -2,9 +2,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     flex-direction: column;
     background-color: #C1EBE9;
+    padding:30px 0;
 }
 
 .login-page h1 {
@@ -22,10 +23,9 @@
 .login-page .card {
     background: rgba(255, 247, 197, 0.7);
     border: 1px solid rgba(255, 247, 197, 0.1);
+    min-height: 60vh;
     color: white;
-    padding-bottom: 17px;
-    padding-right: 20px;
-    padding-left: 10px;
+    padding: 24px 30px;
     border-radius: 18px;
     box-shadow: 0 0 30px rgba(236, 72, 153, 0.1);
     backdrop-filter: blur(3px);
@@ -37,7 +37,11 @@
     width:500px;
     transition: border-color 0.5s ease;
 }
-
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
 .login-page .card:hover {
     border-color: #F4AE52;
 }
@@ -99,6 +103,12 @@ button {
     border-radius: 5px;
     transition: background-color 0.4s ease;
 }
+.btn-modes{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    margin-top:15px;
+}
 
 button:hover {
     background-color: #4F252E;
@@ -117,4 +127,17 @@ button:active {
 
 .success {
     color: green;
+}
+.auth-header{
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    gap:14px;
+    margin-bottom:24px;
+}
+
+.auth-icon {
+    width: 50px;
+    height: 50px;
+    color: white;
 }

@@ -4,13 +4,15 @@ import api, { BASE_URL } from "../../services/api";
 import '../../styles/LoginView.css'
 import ParticleBackground from "../ParticleBackground";
 import axios from "axios";
+import profile from "../../styles/download.svg"
 function LoginView() {
     const navigate = useNavigate();
     const [mode, setMode] = useState('login');
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-
+    const [confirmPassword,setConfirmPassword]=useState("")
+    const [dob,setDob]=useState(null);
     const [otp, setOtp] = useState("");
     const [otpSent, setOtpSent] = useState(false)
     const [emailVerified, setEmailVerified] = useState(false)
@@ -68,8 +70,12 @@ function LoginView() {
             setErrorMessage("Name is required")
             return;
         }
+        if( mode==="signup" && password!==confirmPassword){
+            setErrorMessage("Passwords do not match");
+            return;
+        }
         const url = mode === 'login' ? `${BASE_URL}/auth/login` : `${BASE_URL}/auth/signup`;
-        const body = mode === 'login' ? { email, password } : { name, email, password };
+        const body = mode === 'login' ? { email, password } : { name, email, password, dob};
         try {
             const response = await axios.post(url, body);
             console.log(response.data)
@@ -77,11 +83,19 @@ function LoginView() {
             const payload = JSON.parse(atob(response.data.accessToken.split(".")[1]));
             localStorage.setItem("role", payload.role);
             localStorage.setItem("name", payload.name);
+            localStorage.setItem("id",payload.id);
+            localStorage.setItem("above18",payload.above18);
             setSuccessMessage(response.data.message);
             if (payload.role === "admin") {
                 navigate("/admin");
-            } else {
-                navigate("/home");
+            }
+            else {
+                if(payload.above18===true){
+                    navigate("/home");
+                }
+                else{
+                    navigate("/kids");
+                }
             }
         } catch (err) {
             setErrorMessage(err.response?.data?.message || "Something went wrong");
@@ -98,7 +112,9 @@ function LoginView() {
         <section className="login-page">
             <ParticleBackground />
             <div className="card">
+                <div className="auth-header">
                 <h1>{mode === 'login' ? "Login" : "Sign Up"}</h1>
+                </div>
                 <form onSubmit={submit} className="form">
                     {mode === "signup" && (
                         <div className="form-controls">
@@ -116,7 +132,7 @@ function LoginView() {
                             <input type="email" value={email}
                                 onChange={(e) => setEmail(e.target.value)} />
                             {mode === 'signup' && (
-                                <button type="button" onClick={sendOtp}>Send OTP</button>
+                                <button type="button" onClick={sendOtp} disabled={otpSent}>Send OTP</button>
                             )}
                         </div>
                     </div>
@@ -125,8 +141,14 @@ function LoginView() {
                             <label>OTP</label>
                             <div className="otp-row">
                                 <input type="password" value={otp} onChange={(e) => setOtp(e.target.value)} />
-                                <button type="button" onClick={verifyOtp}>Verify OTP</button>
+                                <button type="button" onClick={verifyOtp} disabled={emailVerified}>Verify OTP</button>
                             </div>
+                        </div>
+                    )}
+                    {(mode=="signup" && emailVerified) && (
+                        <div className="form-controls">
+                            <label>DOB</label>
+                            <input type="date" value={dob} onChange={(e)=>setDob(e.target.value)}/>
                         </div>
                     )}
                     {((mode === "signup" && emailVerified) || mode === "login") && (
@@ -138,12 +160,20 @@ function LoginView() {
                             />
                         </div>
                     )}
+                    {((mode==="signup" && emailVerified)) &&
+                        (<div className="form-controls">
+                            <label>Confirm Password</label>
+                            <input type="password" value={confirmPassword} onChange={(e)=>setConfirmPassword(e.target.value)}/>
+                        </div>)
+                    }
                     {errorMessage && <p className="error">{errorMessage}</p>}
                     {successMessage && <p className="success">{successMessage}</p>}
-                    <button type="submit">{mode === "login" ? 'Login' : 'Sign Up'}</button>
-                    <button type="button" onClick={switchMode}>
-                        {mode === "login" ? "Create an account" : "Already have an account?"}
-                    </button>
+                    <div className="btn-modes">
+                        <button type="submit">{mode === "login" ? 'Login' : 'Sign Up'}</button>
+                        <button type="button" onClick={switchMode}>
+                            {mode === "login" ? "Create an account" : "Already have an account?"}
+                        </button>
+                    </div>
                 </form>
             </div>
 

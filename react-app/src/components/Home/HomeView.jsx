@@ -87,7 +87,7 @@ function HomeView() {
             }
             <div className="search-controls">
                 <div className="search">
-                    <input type="text" className="search-bar" placeholder="Search Videos" onChange={searchVideo} />
+                    <input type="search" className="search-bar" placeholder="Search Videos" onChange={searchVideo} />
                 </div>
                 {/* <div className="genre">
                     <select className="drop" onChange={handleSearch}>
@@ -99,12 +99,12 @@ function HomeView() {
 
             </div>
             <div>
-                {genres.map((genre)=>{
+                {genres.map((genre,i)=>{
                     
                     const filteredImages=images.filter((i)=>i.genre.toLowerCase()==genre);
                     if(filteredImages.length===0) return null;
                     return(
-                        <section key={genre} className="genre-section">
+                        <section key={i} className="genre-section">
                             <h3>{genre.toUpperCase()}</h3>
                             <div className="home-grid">
                                 {filteredImages.map((image)=>(

@@ -13,7 +13,9 @@ const storage=multer.diskStorage({
         cb(null,Date.now()+'-'+file.originalname);
     }
 });
-const upload=multer({storage});
+const upload=multer({
+    storage
+});
 router.get('/image/pending' ,async(req,res)=>{
     try{
         const images= await Image.findAll({
@@ -82,6 +84,11 @@ router.post('/image', authenticateToken, upload.fields([{name:'image',maxCount:1
     if(!imageFile && !videoFile){
         return res.status(400).json({
             message:'Please upload at least an image or a video'
+        })
+    }
+    if(videoFile.size>50*1024*1024){
+        return res.status(400).json({
+            message:"Video File is too large. Maximum 50MB allowed"
         })
     }
     const image = await Image.create({
