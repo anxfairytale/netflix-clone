@@ -32,6 +32,7 @@ function LoginView() {
             setSuccessMessage(response.data.message);
             setOtpSent(true);
         } catch (err) {
+            console.log(err);
             setErrorMessage("Failed to send Otp");
         }
     }

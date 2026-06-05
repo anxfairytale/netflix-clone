@@ -6,6 +6,7 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const db = require('../models/index')
 const User = db.User
+const Image = db.Image
 const authenticateToken = require('./../middleware/authMiddleware')
 function generateAccessToken(user) {
     return jwt.sign(
@@ -74,6 +75,34 @@ router.get('/profile', authenticateToken, async (req, res) => {
         res.json(err);
     }
 })
+router.get('/users', async (req, res) => {
+    try {
+        const users = await User.findAll({
+            include: [
+                {
+                    model: Image
+                }
+            ]
+        })
+        const formattedUsers = users.map((user) => {
+            const plainUser=user.toJSON();
+            const images=plainUser.Images || plainUser.images||[];
+            return {
+                id: plainUser.id,
+                name: plainUser.name,
+                email: plainUser.email,
+                dob: plainUser.dob,
+                approvedCount: images.filter((img) => img.status === "approved").length,
+                rejectedCount: images.filter((img) => img.status === "rejected").length,
+                pendingCount: images.filter((img) => img.status === "pending").length
+            }
+        })
+        res.json(formattedUsers);
+    } catch (err) {
+        console.log(err);
+        res.json({ message: err.message });
+    }
+})
 router.put("/profile", authenticateToken, async (req, res) => {
     try {
         await User.update(
@@ -123,9 +152,9 @@ router.post("/verify-passphrase", authenticateToken, async (req, res) => {
     try {
         const { passphrase } = req.body;
         const user = await User.findOne({ where: { id: req.user.id } });
-        if(!user.passphrase){
+        if (!user.passphrase) {
             return res.status(400).json({
-                message:"Please set a passphrase first"
+                message: "Please set a passphrase first"
             })
         }
         const valid = await bcrypt.compare(passphrase, user.passphrase);
@@ -138,7 +167,7 @@ router.post("/verify-passphrase", authenticateToken, async (req, res) => {
             message: "Passphrase verified"
         });
     } catch (err) {
-        res.json({message:err.message});
+        res.json({ message: err.message });
     }
 })
 const otpStore = {}
@@ -169,9 +198,11 @@ router.post('/send-otp', async (req, res) => {
             message: 'Otp sent'
         })
     } catch (err) {
+        console.log(err);
         res.status(500).json(err);
     }
 });
+
 router.post('/verify-otp', async (req, res) => {
     try {
         const { email, otp } = req.body;

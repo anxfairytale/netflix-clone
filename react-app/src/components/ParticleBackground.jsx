@@ -12,11 +12,11 @@ const particleOptions = {
             value: 40,
         },
         color: {
-            value: "#ec4899"
+            value: "rgba(72, 219, 236, 0.4)"
         },
         links: {
         enable: true,
-        color: "#ec4899",
+        color: "rgba(72, 219, 236, 0.4)",
         opacity: 0.35
       },
         move: {

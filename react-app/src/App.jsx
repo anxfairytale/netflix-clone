@@ -14,6 +14,7 @@ import LandingPage from "./components/LandingPage";
 import MainLayout from "./MainLayout";
 import MyImages from "./components/Home/MyImages";
 import Profile from "./components/Profile";
+import Users from "./components/Users";
 function App() {
   const token = localStorage.getItem("token");
   const role = localStorage.getItem("role");
@@ -48,7 +49,13 @@ function App() {
               </ProtectedRoutes>
             }
           />
-
+          <Route 
+          path="/users" element={
+            <ProtectedRoutes alloweRole="admin">
+              <Users/>
+            </ProtectedRoutes>
+          }
+          />
           <Route
             path="/video/:id"
             element={

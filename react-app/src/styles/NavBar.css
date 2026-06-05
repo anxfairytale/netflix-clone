@@ -1,21 +1,27 @@
 .navbar {
-    background: rgb(7, 166, 171);
+    background: #111;
     height: 60px;
     display: flex;
     align-items: center;
-    gap: 16px;
-    padding: 0 24px;
+    gap: 20px;
+    padding: 24px 24px;
     position: relative;
     z-index: 99999;
-    border-bottom: 1px solid #F4AE52;
+    border-bottom: 1px solid #2a2a2a;
 }
 nav{
-    background-color: #be185d ;
     height: 50px;
 }
+.user-tex{
+    font-weight:bold;
+    color: rgba(72, 219, 236, 0.4)
+}
+nav a:active{
+    color:rgba(72, 219, 236, 0.4);
+}
 .navbar button.active-nav {
-    background-color: #4F252E;
-    color: white;
+    background-color: white;
+    color: black;
     box-shadow: 0 0 12px rgb(12, 21, 21);
     transform: translateY(-2px);
 }
@@ -25,7 +31,8 @@ nav{
     align-items: center;
     justify-content: center;
     padding:10px;
-    background: #F4AE52;
+    background: #a7a7a7;
+    color:black;
 }
 .pass-modal button{
     padding:3px;
@@ -50,9 +57,6 @@ nav{
     align-items:center;
     z-index:9999;
 }
-.pass-modal h2{
-    color:#4F252E;
-}
 .pass-modal{
     background: #FFF7C5;
     color: black;;
@@ -70,4 +74,8 @@ nav{
 }
 .pass-error{
     color:#ff6b6b;
+}
+.logo-nav{
+    font-weight:350;
+    margin-left:53px;
 }

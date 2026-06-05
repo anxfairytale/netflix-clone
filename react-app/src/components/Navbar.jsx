@@ -1,19 +1,18 @@
 import React, { useState } from "react";
-import { Link, useNavigate,useLocation } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import logo from '../styles/logo.png';
 import '../styles/NavBar.css';
 import { authApi } from "../services/api";
 function Navbar({ kids, setKids }) {
     const navigate = useNavigate();
-    const location=useLocation();
+    const location = useLocation();
     const [showPassModal, setPassModal] = useState(false);
-    const [passphrase, setPassphrase] = useState("")
     const [error, setError] = useState("");
     const [targetPath, setTargetPath] = useState("");
     const token = localStorage.getItem("token");
     const role = localStorage.getItem("role");
     const name = localStorage.getItem("name");
-    const above18=localStorage.getItem("above18")==="true" || localStorage.getItem("above18") === "1";
+    const above18 = localStorage.getItem("above18") === "true" || localStorage.getItem("above18") === "1";
     function protectedNavigate(path) {
         if (kids && path !== "/kids") {
             setTargetPath(path);
@@ -43,7 +42,7 @@ function Navbar({ kids, setKids }) {
     function login() {
         navigate("/login");
     }
-    function cancelPassPhrase(){
+    function cancelPassPhrase() {
         setPassModal(false);
         setPassphrase("");
         setError("");
@@ -51,32 +50,97 @@ function Navbar({ kids, setKids }) {
     return (
         <section>
             <nav className="navbar">
-                {above18 && (<button className={`l1 ${location.pathname==="/home"?"active-nav":""}`} onClick={() => protectedNavigate('/home')}>Home</button>)}
-
-                {token && role === "user" && (
-                    <button className={`l1 ${location.pathname==="/uploads"?"active-nav":""}`} onClick={() => protectedNavigate('/uploads')}>Uploads</button>
-                )}
-                {token && role === "admin" && (
-                    <button className={`l1 ${location.pathname==="/admin"?"active-nav":""}`} onClick={() => protectedNavigate("/admin")}>Aprrovals</button>
-                )}
-                {token && role === "user" && !above18 &&(
-                    <button className={`l1 ${location.pathname==="/kids"?"active-nav":""}`} onClick={() => protectedNavigate("/kids")}>Kids</button>
-                )}
-                    {token && (
-                        <div className="user-section">
-                            <h3 className="name-box">Hello, {name} </h3>
-                        <button className={`l1 ${location.pathname==='/profile'?"active-nav":""}` } onClick={()=>protectedNavigate("/profile")}>Profile</button>
-                        <button className={`l1 ${location.pathname==="/my-images"?"active-nav":""}`} onClick={()=>protectedNavigate("/my-images")}>My Images</button>
-                        <button onClick={logout}>
-                            Logout
-                        </button>
-                        </div>
-                        )}
-
-                    {!token && (
-                        <button onClick={login}>Login</button>
+                <h1 className="logo-nav">YouFlicks</h1>
+                <div className="nav-links">
+                    {above18 && (
+                        <a
+                            href="/home"
+                            className={location.pathname === "/home" ? "active-nav" : ""}
+                            onClick={(e)=>{
+                                e.preventDefault();
+                                protectedNavigate("/home");
+                            }}
+                        >
+                            Home
+                        </a>
                     )}
 
+                    {above18 && token && role === "user" && (
+                        <a
+                            href="/uploads"
+                            className={location.pathname === "/uploads" ? "active-nav" : ""}
+                            onClick={(e)=>{
+                                e.preventDefault();
+                                protectedNavigate("/uploads")
+                            }}
+                        >
+                            Upload
+                        </a>
+                    )}
+
+                    {token && role === "admin" && (
+                        <>
+                            <a
+                            href="/admin"
+                            className={location.pathname === "/admin" ? "active-nav" : ""}
+                            onClick={(e)=>{
+                                e.preventDefault();
+                                protectedNavigate("/admin");
+                            }}
+                        >
+                            Approvals
+                        </a>
+                        <a href="/users"
+                        className={location.pathname==="/users"?"active-nav":""}
+                        onClick={(e)=>{
+                            e.preventDefault();
+                            protectedNavigate("/users")
+                        }}>Users
+                        </a>
+                        </>
+                    )}
+
+                    {token && role === "user" && !above18 && (
+                        <a
+                            href="/kids"
+                            className={location.pathname === "/kids" ? "active-nav" : ""}
+                            onClick={(e)=>{
+                                e.preventDefault()
+                                protectedNavigate("/kids");
+                            }}
+                        >
+                            Kids
+                        </a>
+                    )}
+                </div>
+
+                {token? (<div className="user-section">
+                    <span className="user-tex">Hello, {name}</span>
+                    {above18 && role=="user" && (
+                        <div>
+                              <Link
+                        to="/profile"
+                        className={location.pathname === "/profile" ? "active-nav" : ""}
+                    >
+                        Profile
+                    </Link>
+
+                    <Link
+                        to="/my-images"
+                        className={location.pathname === "/my-images" ? "active-nav" : ""}
+                    >
+                        My Images
+                    </Link>
+                        </div>
+                    )}
+                    
+
+                    <button className="btn-signing" onClick={logout}>
+                        Logout
+                    </button>
+                </div>): (<button className="btn-signing" onClick={login}>
+    Sign in
+  </button> )}
             </nav>
             {showPassModal && (
                 <div className="modal-backdrop">

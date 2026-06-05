@@ -70,12 +70,12 @@ function UploadView() {
                         <label>Genre</label>
                         <select required id="genre" name="genre" value={formDetails.genre} onChange={handleChange}>
                             <option value="" disabled>--Select an option--</option>
-                            <option value="flower">Flower</option>
-                            <option value="water">Water</option>
-                            <option value="food">Food</option>
-                            <option value="computer">Computer</option>
-                            <option value="butterfly">Butterfly</option>
-                            <option value="kids">Kids</option>
+                            <option value="flower">Action</option>
+                            <option value="water">Horror</option>
+                            <option value="food">Sci-Fi</option>
+                            <option value="computer">Comedy</option>
+                            <option value="butterfly">Adventure</option>
+                            <option value="kids">Drama</option>
                         </select>
                     </div>
                     <div className="kid1">

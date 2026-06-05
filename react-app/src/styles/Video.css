@@ -8,13 +8,12 @@
 .video-page{
     max-width: 900px;
     margin:0 auto;
-    background-color: #C1EBE9;
+    background-color: black;
 }
 .video-page video{
     width:100%;
     border-radius: 12px;
 }
-.video-page h1{
-    color:#3d0a28
-}
-dialog, .pass-modal { background: #FFF7C5; border: 1px solid #3d0a28; }
+
+dialog, .pass-modal { background: #111; border: 1px solid rgba(72, 219, 236, 0.4); color: #e7e7e7; }
+.pass-modal h2      { color: #e7e7e7; }
