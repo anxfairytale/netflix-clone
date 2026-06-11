@@ -51,9 +51,13 @@ function HomeView() {
     }
     function searchVideo(e) {
         const v = e.target.value.toLowerCase();
-        const filteredImages = allImages.filter((image) =>
-            image.title.toLowerCase().includes(v)
-        );
+        const filteredImages=allImages.filter((image)=>
+        image.genre.toLowerCase().includes(v));
+        if(!filteredImages){
+            const filteredImages = allImages.filter((image) =>
+                image.title.toLowerCase().includes(v)
+            );
+        }
         setImages(filteredImages)
     }
     function handleSearch(e) {
@@ -67,7 +71,6 @@ function HomeView() {
     }
     return (
         <section className="home-page">
-            <h1>Home Page</h1>
             {log && (<div className="modal-overlay">
                 <dialog open class="d1">
                     <h1>Login</h1>

@@ -19,9 +19,8 @@ nav{
 nav a:active{
     color:rgba(72, 219, 236, 0.4);
 }
-.navbar button.active-nav {
-    background-color: white;
-    color: black;
+.active-nav {
+    color:rgba(72, 219, 236, 0.4);;
     box-shadow: 0 0 12px rgb(12, 21, 21);
     transform: translateY(-2px);
 }
@@ -58,7 +57,6 @@ nav a:active{
     z-index:9999;
 }
 .pass-modal{
-    background: #FFF7C5;
     color: black;;
     padding: 24px;
     border-radius:16px;

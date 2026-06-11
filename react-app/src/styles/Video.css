@@ -1,7 +1,7 @@
 .video-player{
     min-height: 100vh;
     background-color: #111;
-    color:white;
+    color:black;
     padding: 2rem;
     background-color: #FFF7C5;
 }
@@ -14,6 +14,8 @@
     width:100%;
     border-radius: 12px;
 }
-
+.video-player h1{
+    color:black;
+}
 dialog, .pass-modal { background: #111; border: 1px solid rgba(72, 219, 236, 0.4); color: #e7e7e7; }
 .pass-modal h2      { color: #e7e7e7; }

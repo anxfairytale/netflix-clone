@@ -27,7 +27,7 @@ function MyImages() {
   }, [])
   return (
     <section className='my-images-page'>
-      <h1>My Images</h1>
+      <h1>My Media</h1>
       <div className="image-section">
         <h3>Approved Images</h3>
         <div className='image-row'>

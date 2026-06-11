@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { BrowserRouter, Routes, Route, Link, useNavigate } from "react-router-dom";
-import {ToastContainer,toast} from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import HomeView from './components/Home/HomeView';
 import UploadView from './components/UploadView';
@@ -21,14 +21,14 @@ function App() {
   const [kids, setKids] = useState(false);
   return (
     <BrowserRouter>
-    <ToastContainer/>
+      <ToastContainer />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<LoginView />} />
 
         <Route element={<MainLayout kids={kids} setKids={setKids} />}>
           <Route path="/home" element={<HomeView />} />
-          <Route path="/profile" element={<Profile/>}/>
+          <Route path="/profile" element={<Profile />} />
           <Route path="/kids" element={<KidsView setKids={setKids} />} />
           <Route
             path="/uploads"
@@ -39,8 +39,8 @@ function App() {
             }
           />
           <Route path="/my-images" element={<ProtectedRoutes allowedRole={"user"}>
-            <MyImages/>
-          </ProtectedRoutes>}/>
+            <MyImages />
+          </ProtectedRoutes>} />
           <Route
             path="/admin"
             element={
@@ -49,12 +49,12 @@ function App() {
               </ProtectedRoutes>
             }
           />
-          <Route 
-          path="/users" element={
-            <ProtectedRoutes alloweRole="admin">
-              <Users/>
-            </ProtectedRoutes>
-          }
+          <Route
+            path="/users" element={
+              <ProtectedRoutes alloweRole="admin">
+                <Users />
+              </ProtectedRoutes>
+            }
           />
           <Route
             path="/video/:id"

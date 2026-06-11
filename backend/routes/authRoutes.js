@@ -124,6 +124,24 @@ router.put("/profile", authenticateToken, async (req, res) => {
         res.status(500).json({ message: err.message });
     }
 });
+router.delete('/users/:id', authenticateToken, async (req, res) => {
+    try {
+        if (req.user.role !== 'admin') {
+            return res.status(403).json({ message: 'Only admin can delete users' })
+        }
+
+        const userId = req.params.id
+
+        await User.destroy({
+            where: { id: userId }
+        })
+
+        res.json({ message: 'User deleted successfully' })
+    } catch (err) {
+        console.log(err)
+        res.status(500).json({ message: 'Something went wrong' })
+    }
+})
 router.delete('/profile', authenticateToken, async (req, res) => {
     try {
         await User.destroy({

@@ -9,7 +9,7 @@ function LandingPage() {
       <div className="layer-blur"></div>
 
       <header>
-        <h1 className="logo">YouFlicks</h1>
+        <h1 className="logo">FlicksVerse</h1>
          <nav>
           <a href="/home">Home</a>
           <a href="/uploads">Upload</a>

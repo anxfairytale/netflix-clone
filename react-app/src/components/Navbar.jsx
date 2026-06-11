@@ -129,7 +129,7 @@ function Navbar({ kids, setKids }) {
                         to="/my-images"
                         className={location.pathname === "/my-images" ? "active-nav" : ""}
                     >
-                        My Images
+                        My Media
                     </Link>
                         </div>
                     )}
